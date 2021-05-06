@@ -1,0 +1,19 @@
+// 云函数入口文件
+const cloud = require('wx-server-sdk')
+
+cloud.init({
+  env: cloud.DYNAMIC_CURRENT_ENV
+})
+const db = cloud.database()
+// 云函数入口函数
+exports.main = async (event, context) => {
+  const wxContext = cloud.getWXContext();
+  const {
+    collectionName
+  } = event
+  return await db.collection(''+collectionName+'').where({
+    userInfo: {
+      openId: wxContext.OPENID // 填入当前用户 openid
+    } 
+  }).count()
+}

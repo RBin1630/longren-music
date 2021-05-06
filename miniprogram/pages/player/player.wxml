@@ -1,0 +1,56 @@
+<view class="songDetailContainer">
+    <view class="bgImg">
+        <image src="{{songInfo.al.picUrl}}"></image>
+    </view>
+    <view class="songInfo">
+        <!-- <text class="songName">{{songInfo.songname}}</text> -->
+        <text class="singer">{{songInfo.ar[0].name}}</text>
+    </view>
+    <!-- 封面旋转区域 -->
+    <view class="rotateContainer {{isPlay ? 'running' : 'paused'}}">
+        <image src="{{songInfo.al.picUrl}}"></image>
+    </view>
+    <view class="like">
+        <text class="iconfont {{like?'icon-xihuan1 likeColor':'icon-xihuan'}}" bindtap="handleLike"></text>
+    </view>
+    <!-- 进度条模块 -->
+    <view class="progress">
+        <text class="satrt">{{currentTime}}</text>
+        <slider 
+        class="progressBar"
+        block-size="12"
+         backgroundColor="#aaa" 
+         activeColor="#fff"
+         block-color="#fff" 
+         value="{{sliderValue}}" 
+         bindchange="handleProgress"></slider>
+        <text class="end">{{durationTime}}</text>
+    </view>
+    
+    <!-- 按钮控制区域 -->
+    <view class="playControl">
+        <text class="iconfont icon-icon_xunhuanbofang_px"></text>
+        <text class="iconfont icon-icon-test1" id="pre" bind:tap="handleSwitch"></text>
+        <text class="iconfont big {{isPlay ? 'icon-bofang-' : 'icon-bofang'}}" bind:tap="handlePlay"></text>
+        <text class="iconfont icon-icon-test" id="next" bind:tap="handleSwitch"></text>
+        <text class="iconfont icon-gedan" bindtap="openList"></text>
+    </view>
+
+    <!-- 播放列表 -->
+    <view class="content-wrapper {{translateCls}}">
+      <view class="close-list"  bindtap="close"></view>
+      <view class="play-content">
+        <view class="plyer-list-title">播放队列({{playListData.length}}首)</view>
+        <scroll-view class="playlist-wrapper" scroll-y scroll-into-view="list{{currentIndex}}">
+          <view class="item {{index==currentIndex ? 'playing':''}}" wx:for="{{playListData}}"
+                data-index="{{index}}" data-item="{{item}}" bindtap="playthis" wx:key="index">
+            <view class="name">{{item.name}}</view>
+            <view class="play_list__line">-</view>
+            <view class="singer">{{item.ar[0].name || item.artists[0].name}}</view>
+            <image class="playing-img" wx:if="{{index==currentIndex}}" src="./playing.gif"/>
+          </view>
+        </scroll-view>
+        <view class="close-playlist" bindtap="close">关闭</view>
+      </view>
+    </view>
+</view>

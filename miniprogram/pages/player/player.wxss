@@ -1,0 +1,247 @@
+.songDetailContainer {
+  position: relative;
+  height: 100%;
+  text-align: center;
+}
+
+.bgImg {
+  width: 100%;
+  height: 100vh;
+  filter: blur(60rpx);
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  
+}
+.bgImg image {
+  width: 750%;
+  height: 75%;
+  transform: scale(1.5);
+  /* overflow: hidden; */
+}
+
+/* 歌手名区域 */
+.songInfo {
+  padding: 20rpx 0;
+}
+.singer {
+  color: #fff;
+}
+
+/* 封面区域 */
+.rotateContainer {
+  width: 400rpx;
+  height: 400rpx;
+  padding: 200rpx 0;
+  margin: 0 auto;
+  animation: disc 16s linear infinite;
+  animation-play-state: paused;
+}
+
+.running {
+  animation-play-state: running;
+}
+.pasued {
+  animation-play-state: paused;
+}
+
+@keyframes disc {
+  from {
+      transform: rotate(0deg);
+  }
+  to {
+      transform: rotate(360deg);
+  }
+}
+
+.rotateContainer image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: 0 0 30rpx 10rpx #bbb;
+}
+
+/* 添加到我喜欢的歌曲 */
+.like {
+  margin-top: 50rpx;
+}
+.like text {
+  color: #fff;
+  font-size: 60rpx;
+}
+.like .likeColor {
+  color: red;
+}
+
+/* 进度条区域 */
+.progress {
+  display: flex;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 120rpx;
+  height: 50rpx;
+  line-height: 50rpx;
+  align-items: center;
+  justify-content: center;
+  font-size: 24rpx;
+  color: #fff;
+}
+
+.progressBar {
+  width: 530rpx;
+  margin: 0 20rpx;
+}
+
+/* 实际长度为530rpx */
+/* .progressBar {
+  width: 530rpx;
+  height: 4rpx;
+  background-color: rgb(0, 0, 0, 0.3);
+  border-radius: 2rpx;
+  margin: 0 20rpx; 
+} */
+
+/* .currentTimeProgress {
+  position: relative;
+  height: 4rpx;
+  background-color: #000;
+}
+
+.progressBall {
+  width: 12rpx;
+  height: 12rpx;
+  background-color: lightgreen;
+  border-radius: 50%;
+  position: absolute;
+  right: -6rpx;
+  top: -4rpx;
+} */
+
+
+/* 按钮控制区域 */
+.playControl {
+  display: flex;
+  width: 100%;
+  height: 100rpx;
+  line-height: 100rpx;
+  padding-bottom: 25rpx;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  color: #fff;
+}
+
+.playControl text {
+  width: 20%;
+  font-size: 60rpx;
+}
+
+.playControl text.big {
+  font-size: 80rpx;
+}
+
+/* 弹出的播放列表 */
+.content-wrapper {
+  position: fixed;
+  top: 100%;
+  height: 100%;
+  width: 100%;
+  z-index: 150;
+  transition: all 0.5s;
+}
+.close-list {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 100%;
+}
+.playlist-wrapper {
+  height: 660rpx;
+  width: 100%;
+  padding:15rpx 30rpx;
+  box-sizing: border-box;
+}
+.playlist-wrapper .item {
+  display: flex;
+  position: relative;
+  height: 90rpx;
+  line-height: 90rpx;
+  margin-left: 30rpx;
+  padding-right: 30rpx;
+  border-bottom: 1rpx dashed rgba(255,255,255,.3);
+}
+.playlist-wrapper .playing,
+.playlist-wrapper .playing .singer,
+.playlist-wrapper .playing .play_list__line,
+.playlist-wrapper .playing .name {
+  color: #ff9900!important;
+}
+
+.playlist-wrapper .item .name {
+  max-width:350rpx;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size: 14px;
+  color: #fff;
+}
+.playlist-wrapper .item .play_list__line {
+  display: block;
+  margin: 0 5px;
+  color: rgba(255,255,255,.5);
+}
+.playlist-wrapper .item .singer {
+  max-width:200rpx;
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+  font-size: 12px;
+  color: rgba(255,255,255,.5);
+}
+.playlist-wrapper .item .playing-img {
+  width: 24rpx;
+  height: 24rpx;
+  position: absolute;
+  top: 32rpx;
+  right: 0;
+}
+.play-content {
+  position: absolute;
+  /*//bottom: -860rpx;*/
+  bottom: 0;
+  /*transform: translateY(860rpx);*/
+  left: 0;
+  right: 0;
+  height: 860rpx;
+  width: 100%;
+  background: rgba(0,0,0,.9);
+  z-index: 200;
+  transition: all 0.5s;
+}
+.uptranslate {
+  transform: translateY(-100%)!important;
+}
+.downtranslate {
+  transform: translateY(100%)!important;
+}
+.close-playlist {
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  border-top: 1px solid rgba(255,255,255,.3);
+  font-size: 16px;
+  color: #fff;
+}
+.plyer-list-title{
+  height: 100rpx;
+  width: 100%;
+  text-align: center;
+  line-height: 100rpx;
+  border-bottom: 1px solid rgba(255,255,255,.3);
+  font-size: 16px;
+  color: #fff;
+}

@@ -1,0 +1,28 @@
+<view class="videoPlayerContainer">
+  <!-- 视频 -->
+  <video class="videoBox" src="{{videoSrc}}" autoplay></video>
+  <scroll-view class="videoScroll" scroll-y style="height: 740rpx">
+    <!-- 视频信息 -->
+    <view class="videoInfo">
+      <view class="title">{{videoInfo.title}}</view>
+      <view class="creator">{{videoInfo.creator.nickname}}</view>
+      <view>
+        <text class="playCount">{{videoInfo.playTime}}次播放 </text>
+        <!-- <text class="createTime">2021-04-03</text> -->
+      </view>
+    </view>
+    <!-- 相关视频 -->
+    <wxs module="unit" src="../../filter/formatPlayCount.wxs"></wxs>
+    <view class="otherVideo">
+      <view class="otherVideoTitle">相关视频</view>
+      <view class="otherVideoItem" wx:for="{{otherVideoList}}" wx:key="vid" data-item="{{item}}" bindtap="loadOtherVideo">
+        <image src="{{item.coverUrl}}"></image>
+        <text class="durationms">{{unit.formatPlayTime(item.durationms)}}</text>
+        <view class="otherVideoItemInfo">
+          <view class="otherVideoItemTitle">{{item.title}}</view>
+          <view class="otherVideoItemCreator">{{item.creator[0].userName}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

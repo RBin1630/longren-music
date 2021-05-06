@@ -1,0 +1,98 @@
+/* active样式 */
+.active {
+  border-bottom: 1px solid #999;
+}
+.active .songCount {
+  color: #999;
+}
+/* 用户个人信息模块 */
+.userInfoContainer {
+  display: flex;
+  height: 250rpx;
+  align-items: center;
+  padding: 0 20rpx;
+  position: relative;
+
+  background-color: aqua;
+}
+
+.userInfoContainer .userAvatar {
+  width: 150rpx;
+  height: 150rpx;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.userInfoContainer .nickName {
+  margin-left: 30rpx;
+}
+
+.userInfoContainer .playMode {
+  position: absolute;
+  right: 30rpx;
+  bottom: 30rpx;
+  font-size: 50rpx;
+}
+
+/* 播放列表部分 */
+.playListContainer {
+  border-radius: 20rpx;
+  overflow: hidden;
+}
+/* 导航标题 */
+.navBarContainer {
+  display: flex;
+  height: 60rpx;
+  line-height: 60rpx;
+  background-color: #fff;
+  text-align: center;
+}
+
+.navBarContainer .navBarTitle {
+  width: 50%;
+}
+
+.songCount {
+  font-size: 24rpx;
+  color: #666;
+}
+
+/* 歌曲列表部分 */
+.songListContainer {
+  padding: 0 30rpx;
+  background-color: #fff;
+}
+
+.songListSwiper {
+  height: calc(100vh - 310rpx);
+}
+.songListScroll {
+  width: 102%;
+}
+
+.songListContainer .songItem {
+  display: flex;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-bottom: 1px solid #ddd;
+}
+
+.songListContainer .songItem .no {
+  padding: 0 30rpx;
+}
+
+.songListContainer .songItem .songInfo {
+  flex: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.author {
+  font-size: 24rpx;
+  color: #aaa;
+  padding-left: 10rpx;
+}
+
+.songListContainer .songItem .setting {
+  padding: 0 30rpx;
+}

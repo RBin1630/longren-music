@@ -1,0 +1,80 @@
+<view class="indexContainer">
+  <!-- 搜索栏模块 -->
+  <view class="searchContainer" bindtap="toSearch">
+    <text class="iconfont icon-sousuo searchIcon"></text>
+    <view class="searchInput">搜索</view>
+  </view>
+
+  <!-- 轮播图模块 -->
+  <view class="bannerContainer">
+    <swiper indicator-dots indicator-color="rgba(172, 179, 181, 0.8)" indicator-active-color="#c40c0c" autoplay
+      class="bannerSwiper">
+      <swiper-item wx:for="{{bannerImageUrlList}}" wx:key="bannerId">
+        <view class="bannerItem">
+          <image src="{{item.pic}}" class="banner-img"></image>
+          <text class="bannerTypeTitle">{{item.typeTitle}}</text>
+        </view>
+      </swiper-item>
+    </swiper>
+  </view>
+
+  <!-- 排行榜 -->
+  <view class="topListContainer">
+    <!-- 头部 -->
+    <nav-header title="排行榜" more="更多" class="topListHeader"></nav-header>
+    <!-- 排行轮播 -->
+    <swiper class="topListSwiper" next-margin="70rpx" snap-to-edge>
+      <swiper-item wx:for="{{topListData}}" wx:for-item="topListItem" wx:for-index="topListIndex" wx:key="id">
+        <view class="topListItem">
+          <view class="topTitle" data-item="{{topListItem}}" bindtap="toSongList">{{topListItem.name}}</view>
+          <view class="songItem" wx:for="{{topListItem.tracks}}" wx:key="id" data-songid="{{item.id}}" data-playlistid="{{topListItem.id}}" data-index="{{topListIndex}}" bindtap="toPlayer">
+            <image src="{{item.al.picUrl}}"></image>
+            <text class="no">{{index + 1}}</text>
+            <text class="songName">{{item.name}}</text>
+            <view class="singer">
+              <text>- </text>
+              <text>{{item.ar[0].name}}</text>
+            </view>
+          </view>
+        </view>
+      </swiper-item>
+
+
+
+
+
+    </swiper>
+  </view>
+
+  <!-- 热门歌单模块 -->
+  <view class="recommendContainer">
+    <!-- 头部 -->
+    <nav-header title="热门歌单" more="更多"></nav-header>
+    <!-- 滑块区域 -->
+    <scroll-view class="scrollView" enable-flex scroll-x>
+      <view class="scrollItem" wx:for="{{hotSongList}}" wx:key="id" data-item="{{item}}" bindtap="toSongList">
+        <image src="{{item.picUrl}}"></image>
+        <text>{{item.name}}</text>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 歌曲推荐模块 -->
+  <view class="songRecommendContainer">
+    <!-- 歌曲推荐头部 -->
+    <nav-header title="推荐歌曲" more="更多"></nav-header>
+    <!-- 歌曲推荐列表部分 -->
+    <view class="songRecommedList">
+      <view class="songRecommendItem" wx:for="{{recommendSongs}}" wx:key="id" data-songid="{{item.id}}" bindtap="toPlayer">
+        <image src="{{item.al.picUrl}}"></image>
+
+        <view class="songInfo">
+          <text class="songName">{{item.name}}</text>
+          <text class="songAuthor">{{item.ar[0].name}}</text>
+        </view>
+        <text class="iconfont icon-arrow"></text>
+      </view>
+    </view>
+  </view>
+
+</view>

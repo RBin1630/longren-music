@@ -1,0 +1,73 @@
+/* miniprogram/pages/VideoPlayer/videoPlayer.wxss */
+.videoBox {
+  width: 100%;
+}
+
+/* scroll */
+.videoScroll {
+  background-color: #fff;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+/* 视频标题部分 */
+.videoInfo {
+  padding: 10rpx 0 20rpx 0;
+}
+
+.creator,
+.playCount,
+.createTime {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.creator {
+  margin-top: 10rpx;
+}
+
+/* 相关视频 */
+.otherVideo {
+  width: 100%;
+}
+
+.otherVideoItem {
+  display: flex;
+  margin-top: 20rpx;
+  position: relative;
+}
+
+.otherVideoItem image {
+  width: 240rpx;
+  height: 130rpx;
+  border-radius: 20rpx;
+}
+
+.otherVideoItem .durationms {
+  position: absolute;
+  bottom: 10rpx;
+  left: 160rpx;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.otherVideoItem .otherVideoItemInfo {
+  box-sizing: border-box;
+  flex: 1;
+  padding: 5rpx 0rpx 5rpx 20rpx;
+}
+
+.otherVideoItemTitle {
+  font-size: 30rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.otherVideoItemCreator {
+  font-size: 24rpx;
+  color: #333;
+  margin-top: 10rpx;
+}

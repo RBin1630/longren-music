@@ -1,0 +1,24 @@
+<view class="videoContainer">
+  <wxs module="unit" src="../../filter/formatPlayCount.wxs"></wxs>
+  <mp-tabs tabs="{{tabs}}" activeTab="{{activeTab}}" swiperClass="weui-tabs-swiper" tab-class="navTabs"
+    active-class="activeTabs" windowHeight="{{windowHeight - 88}}">
+      <scroll-view class="tab-content" style="height: calc(100vh - 88rpx)" slot="tab-content-0" bindscrolltolower="loadRecommendVideo" scroll-y enable-flex>
+        <view class="videoItem" wx:for="{{recommendVideoData}}" wx:key="id" data-item="{{item}}" bindtap="toVideoPlayer">
+          <image src="{{item.data.coverUrl}}"></image>
+          <text class="videoTitle">{{item.data.title}}</text>
+          <text class="iconfont icon-guankanliang playCount"> {{unit.formatPlayCount(item.data.playTime)}}</text>
+          <text class="playTime">{{unit.formatPlayTime(item.data.durationms)}}</text>
+        </view>
+      </scroll-view>
+
+      <scroll-view class="tab-content-mv" style="height: calc(100vh - 88rpx)" slot="tab-content-1" scroll-y enable-flex>
+        <view class="mvItem" wx:for="{{hotMVList}}" wx:key="id">
+          <image src="{{item.cover}}" wx:if="{{MVId !== item.id}}" data-item="{{item}}" bindtap="playMV"></image>
+          <video src="{{MVSrc}}" poster="{{item.cover}}" autoplay wx:else="{{MVSrc!==''}}"></video>
+          <text class="mvTitle">{{item.name}}</text>
+          <!-- <text class="iconfont icon-guankanliang mvPlayCount"> {{unit.formatPlayCount(item.playCount)}}</text> -->
+          <!-- <text class="playTime">{{item.}}</text> -->
+        </view>
+      </scroll-view>
+  </mp-tabs>
+</view>

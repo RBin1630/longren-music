@@ -1,0 +1,19 @@
+<view class="songListContainer">
+  <!-- 背景图片模块 -->
+  <view class="bg">
+    <image src="{{songList[0].al.picUrl}}"></image>
+    <text class="randomPlayAll">随机播放全部</text>
+  </view>
+  <!-- 歌曲列表 -->
+  <view class="songList">
+    <view class="songItem" wx:for="{{songList}}" wx:key="id" data-songid="{{item.id}}" bindtap="toPlayer">
+      <view class="songInfo">
+        <text class="songName">{{item.name}}</text>
+        <text class="author">{{item.ar[0].name}}</text>
+      </view>
+      <text class="icondont icon-xihuan like"></text>
+    </view>
+
+    
+  </view>
+</view>

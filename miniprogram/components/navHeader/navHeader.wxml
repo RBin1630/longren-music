@@ -1,0 +1,8 @@
+<!--miniprogram/components/navHeader/navHeader.wxml-->
+<view class="songRecommendHeader">
+  <text class="title">{{title}}</text>
+  <view class="more">
+    <text>{{more}}</text>
+    <text class="iconfont icon-arrow"></text>
+  </view>
+</view>

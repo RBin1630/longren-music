@@ -1,0 +1,56 @@
+<view class="profileContainer">
+  <!-- 用户个人信息模块 -->
+  <view class="userInfoContainer">
+    <open-data class="userAvatar" type="userAvatarUrl"></open-data>
+    <open-data class="nickName" type="userNickName"></open-data>
+    <text class="iconfont icon-icon_xunhuanbofang_px playMode"></text>
+  </view>
+
+  <!-- 歌曲列表模块 -->
+  <view class="playListContainer">
+    <!-- 导航部分 -->
+    <view class="navBarContainer">
+      <view data-index="{{0}}" class="navBarTitle {{currentIndex === 0 ? 'active' : ''}}"
+        bindtap="handleCurrentIndex">
+        <text>最近</text>
+        <text class="songCount">/{{historyListLength}}</text>
+      </view>
+      <view data-index="{{1}}" class="navBarTitle {{currentIndex === 1 ? 'active' : ''}}"
+        bindtap="handleCurrentIndex">
+        <text>收藏</text>
+        <text class="songCount">/{{likeListLength}}</text>
+      </view>
+    </view>
+
+    <!-- 歌曲列表部分 -->
+    <view class="songListContainer">
+      <swiper class="songListSwiper" current="{{currentIndex}}" bindchange="handleSwiperChange">
+        <swiper-item>
+          <scroll-view style="height: 100%" enhanced show-scrollbar="false" bindscrolltolower="loadSongList" scroll-y>
+            <view class="songItem" wx:for="{{historyList}}" wx:key="_id" bindtap="toPlayer" data-type="history" data-songid="{{item.songInfo.id}}">
+              <text class="no">{{index + 1}}</text>
+              <view class="songInfo">
+                <text class="songName">{{item.songInfo.name}}</text>
+                <text class="author">-{{item.songInfo.ar[0].name}}</text>
+              </view>
+              <text class="iconfont icon-xiangqing setting" data-type="history" data-index="{{index}}" data-item="{{item}}" catchtap="songSetting"></text>
+            </view>
+          </scroll-view>
+        </swiper-item>
+
+        <swiper-item>
+          <scroll-view class="songListScroll" style="height: 100%" bindscrolltolower="loadSongList" scroll-y>
+            <view class="songItem" wx:for="{{likeList}}" wx:key="_id" bindtap="toPlayer" data-type="like" data-songid="{{item.songInfo.id}}">
+              <text class="no">{{index + 1}}</text>
+              <view class="songInfo">
+                <text class="songName">{{item.songInfo.name}}</text>
+                <text class="author">-{{item.songInfo.ar[0].name}}</text>
+              </view>
+              <text class="iconfont icon-xiangqing setting" data-type="like" data-index="{{index}}" data-item="{{item}}" catchtap="songSetting"></text>
+            </view>
+          </scroll-view>
+        </swiper-item>
+      </swiper>
+    </view>
+  </view>
+</view>

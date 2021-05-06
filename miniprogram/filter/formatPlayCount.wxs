@@ -1,0 +1,29 @@
+var unit = {
+  formatPlayTime: function(text){
+    var getNum = text*1;
+    var totalSecond = getNum / 1000;
+    var minute = parseInt(totalSecond / 60);
+    if(minute < 10) {
+      minute = '0' + minute;
+    }
+    var second = parseInt(totalSecond % 60);
+    if(second < 10) {
+      second = '0' + second;
+    }
+    var formatTime = minute + ':' + second;
+    return formatTime;
+  },
+  formatPlayCount: function(text) {
+    var getNum = text * 1;
+    if(getNum < 10000) {
+      return getNum;
+    } else {
+      getNum = parseInt(getNum / 10000);
+      return getNum + '万';
+    }
+  }
+}
+module.exports = {
+  formatPlayTime: unit.formatPlayTime,
+  formatPlayCount: unit.formatPlayCount
+}

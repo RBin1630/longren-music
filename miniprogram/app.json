@@ -1,0 +1,53 @@
+{
+  "tabBar": {
+    "color": "#707070",
+    "selectedColor": "#000",
+    "list": [{
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/static/images/tabs/yinle.png",
+        "selectedIconPath": "/static/images/tabs/yinle_active.png"
+      },
+      {
+        "pagePath": "pages/video/video",
+        "text": "视频",
+        "iconPath": "/static/images/tabs/shipin.png",
+        "selectedIconPath": "/static/images/tabs/shipin_active.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "/static/images/tabs/wode.png",
+        "selectedIconPath": "/static/images/tabs/wode_active.png"
+      }
+    ]
+  },
+  "pages": [
+    "pages/index/index",
+    "pages/video/video",
+    "pages/profile/profile",
+    
+    "pages/player/player",
+    
+    
+    "pages/videoPlayer/videoPlayer",
+
+    "pages/songList/songList",
+    "pages/search/search",
+
+
+    "components/navHeader/navHeader"
+
+
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "龙人音乐",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json",
+  "style": "v2",
+  "requiredBackgroundModes": ["audio"]
+}

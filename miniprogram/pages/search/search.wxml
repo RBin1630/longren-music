@@ -1,0 +1,56 @@
+<view class="search-page">
+  <!-- 搜索栏模块 -->
+  <view class="search-wrapper">
+    <text class="iconfont icon-sousuo searchIcon"></text>
+    <input class="search" placeholder="{{searchDefault.showKeyword}}" auto-focus placeholder-class="placeholder"
+      confirm-type="search" bindinput="handleInput" model:value="{{keyWord}}" />
+  </view>
+  <!-- bindconfirm="handleInput"
+            -->
+  <!-- 主体模块 -->
+  <view class="main">
+    <!-- 热门搜索关键词展示 -->
+    <view class="hot-wrapper">
+      <view class="title">热门搜索: </view>
+      <view class="hot-details">
+        <view class="item" wx:for="{{searchHots}}" wx:key="index" bindtap="searchAction" data-txt="{{item.first}}">
+          {{item.first}}</view>
+      </view>
+    </view>
+    <!-- 历史搜索记录 -->
+    <view class="histroy">
+      <view class="title">历史搜索: </view>
+      <scroll-view class="histroy-wrapper" scroll-y>
+        <view class="item" wx:for="{{histroySearch}}" wx:key="index" bindtap="searchAction" data-txt="{{item}}">
+          <view class="txt">{{item}}</view>
+          <view class="x" catchtap="deleteHistroySearch" data-txt="{{item}}">X</view>
+        </view>
+      </scroll-view>
+      <view class="clear" catchtap="deleteHistroySearch" wx:if="{{histroySearch.length>0}}">
+        <i class="icon-clear"></i>
+        清空搜搜历史
+      </view>
+    </view>
+  </view>
+  <!-- 搜索建议模块 -->
+  <scroll-view scroll-y class="search-result-wrapper" wx:if="{{keyWord}}">
+    <!-- <view class="singer-wrapper">
+      <view class="item" wx:for="{{singers}}"
+            wx:key="{{index}}"
+            data-name="{{item.name}}"
+            data-id="{{item.mid}}"
+            bindtap="goSinger">
+        <image class="image" src="{{item.pic}}"/>
+        {{item.name}}
+      </view>
+    </view> -->
+    <view class="song-wrapper">
+      <block wx:if="{{songs.length > 0}}">
+        <view class="item" wx:for="{{songs}}" wx:key="id" data-id="{{item.id}}" data-item="{{item}}"
+          data-keyword="{{item.name + '-' + item.artists[0].name}}" bindtap="handleSelectSong">
+          {{item.name}} - {{item.artists[0].name}}
+        </view>
+      </block>
+    </view>
+  </scroll-view>
+</view>
